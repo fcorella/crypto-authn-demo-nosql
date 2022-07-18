@@ -1,0 +1,44 @@
+#!/bin/bash
+
+echo "---------------- accessing the installation materials"
+cd /home/ec2-user/crypto-authn-demo-nosql/installation-materials || exit 1
+
+echo "---------------- installing mongodb"
+sudo cp mongodb-org-5.0.repo /etc/yum.repos.d/ || exit 1
+sudo yum install -y mongodb-org || exit 1
+
+echo "---------------- starting mongod as a systemd service"
+sudo systemctl start mongod || exit 1
+sudo systemctl status mongod || exit 1
+sudo systemctl enable mongod || exit 1 // restart after reboot
+
+# echo "---------------- installing nodejs"
+# curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash - || exit 1
+# sudo yum install -y nodejs || exit 1
+# node --version || exit 1
+# 
+# echo "---------------- allowing node to receive network connections"
+# sudo /usr/sbin/setcap 'cap_net_bind_service=+ep' /usr/bin/node || exit 1
+
+echo "---------------- installing npm dependencies"
+cd /home/ec2-user/crypto-authn-demo || exit 1
+npm install . || exit 1
+
+echo "---------------- prompting for and setting the hostname in the link"
+
+read -p "please enter the public ip address of the EC2 instance, or a
+domain name mapping to the address: " host
+
+cd /home/ec2-user/crypto-authn-demo/views || exit 1
+sed -i s/HOSTNAME/$host/ message-sent.handlebars || exit 1
+
+# echo "---------------- installing the demo as a systemd service"
+# cd /home/ec2-user/crypto-authn-demo/installation-materials
+# sudo cp demo.service /etc/systemd/system || exit 1
+# 
+# echo "---------------- starting the demo"
+# sudo systemctl start demo || exit 1
+# sudo systemctl status demo || exit 1
+# sudo systemctl enable demo || exit 1 // restart after reboot
+
+echo "INSTALLATION SUCCESSFUL" 

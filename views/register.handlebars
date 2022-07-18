@@ -1,0 +1,70 @@
+<script>
+function checkRegistration() {
+    var s = "";
+
+    var unElt = document.getElementById("email-reg");
+    var email = unElt.value.replace(/^\s+/,"").replace(/\s+$/,"");
+    unElt.value = email;
+    if (email == "") {
+        s += "Please enter your email address<br>";
+    }
+    else if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/) == -1) {
+        s += "Please enter a valid email address<br>";
+    }
+
+    var fnElt = document.getElementById("firstname");
+    var firstname = fnElt.value.replace(/^\s+/,"").replace(/\s+$/,"");
+    fnElt.value = firstname;
+    if (firstname == "") {
+        s += "Please enter the first name<br>";
+    }
+    else if (firstname.search(/^[A-Za-z]+$/) == -1) {
+        s += "The first name can only have ASCII letters<br>";
+    }
+
+    var lnElt = document.getElementById("lastname");
+    var lastname = lnElt.value.replace(/^\s+/,"").replace(/\s+$/,"");
+    lnElt.value = lastname;
+    if (lastname == "") {
+        s += "Please enter the last name<br>";
+    }
+    else if (lastname.search(/^[A-Za-z]+$/) == -1) {
+        s += "The last name can only have ASCII letters<br>";
+    }
+
+    if (s) {
+        document.getElementById("reg-error").innerHTML = s;
+        return false;
+    }
+}
+
+</script>
+
+<h1>Registration</h1>
+
+<p>
+<span style="color: red" id="reg-error"></span>
+</p>
+
+<form action="/register-user" method="post" onsubmit="return checkRegistration()">
+    Email:<br>
+    <input type="text" name="email" id="email-reg">
+    <br>
+    First name:<br>
+    <input type="text" name="firstname" id="firstname">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" id="lastname">
+    <br>
+    <br>
+    When you submit this form, an email message with a link<br>
+    will be sent to verify the email address and create
+    a cryptographic credential
+    <br>
+    <br>
+    <input type="submit" value="Register">
+    <br>
+    <br>
+    </form> 
+
+<p><a href="/">Go to the home page</a></p>

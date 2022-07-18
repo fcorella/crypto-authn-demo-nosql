@@ -1,0 +1,30 @@
+<h3>Cryptographic Authentication Demo</h3>
+
+<div id="to-be-replaced">
+<h2>Message sent</h2>
+
+<p> A message with a link has been sent to {{email}}.  When you open
+that link in a browser a cryptographic credential will be created in
+that browser and you will be logged in.  </p>
+
+<p>[<i> In this demo, the message is simulated by a web page that will
+replace this page in 8 seconds </i>]</p>
+</div>
+
+<script>
+const message = `<p>
+Open the link below in a browser to create a cryptographic credential
+in that browser and log in.  In the future, once the credential has
+been created, you will be able to log in by entering your email
+address, without waiting for a message containing a link.
+</p>
+<p>
+<a href="https://pomcor.net/create-credential?email={{email}}&emailVerifCodeHex={{emailVerifCodeHex}}&keyConfirmationChallengeHex={{keyConfirmationChallengeHex}}">https://pomcor.net/create-credential?email={{email}}&emailVerifCodeHex={{emailVerifCodeHex}}&keyConfirmationChallengeHex={{keyConfirmationChallengeHex}}</a>
+</p>`;
+
+function displayMessage() {
+    document.getElementById("to-be-replaced").innerHTML = message;
+}
+
+window.onload = function () { setTimeout(displayMessage, 8000); };
+</script>

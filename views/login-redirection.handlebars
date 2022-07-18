@@ -1,0 +1,67 @@
+<script type="module">
+import {
+    pjclHex2BitArray,
+    pjclHex2BigInt,
+    pjclBigInt2Hex,
+    pjclRBG128InstantiateOrReseed,
+    pjclCurve_P256,
+    pjclECDSASignMsg
+} from "./pjcl.js";
+import { pjclBrowserEntropy128Bits } from "./browser-entropy.js";
+
+const serverEntropy = "{{entropyHex}}";
+const challenge = "{{challengeHex}}";
+const email = "{{email}}";
+const destination = "{{destination}}";
+
+// the following function is derived from:
+// https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+function post(path, params) {
+    const form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", path);
+    for(let key in params) {
+        if(params.hasOwnProperty(key)) {
+            const hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+            form.appendChild(hiddenField);
+        }
+    }
+    document.body.appendChild(form);
+    // form.submit();
+    window.onload = function () { form.submit(); }; // to bypass the Firefox bug
+}
+
+const entropy = pjclBrowserEntropy128Bits().concat(pjclHex2BitArray(serverEntropy));
+pjclRBG128InstantiateOrReseed(localStorage,entropy);
+const prefix = "demo-app-" + email;
+const privKeyHex_d = localStorage[prefix + "privKeyHex_d"];
+let params;
+if (privKeyHex_d) {
+    const pubKeyHex_Q_x = localStorage[prefix + "pubKeyHex_Q_x"];
+    const pubKeyHex_Q_y = localStorage[prefix + "pubKeyHex_Q_y"];
+    const d = pjclHex2BigInt(privKeyHex_d);
+    const msg = pjclHex2BitArray(challenge);
+    const signature = pjclECDSASignMsg(localStorage,pjclCurve_P256,d,msg);
+    const sigHex_r= pjclBigInt2Hex(signature.r);
+    const sigHex_s= pjclBigInt2Hex(signature.s);
+    params = {
+	credentialFound: "yes",
+	email: email,
+	pubKeyHex_Q_x: pubKeyHex_Q_x,
+	pubKeyHex_Q_y: pubKeyHex_Q_y,
+	sigHex_r: sigHex_r,
+	sigHex_s: sigHex_s,
+	destination: destination
+    };
+}
+else {
+    params = {
+	credentialFound: "no",
+	email: email
+    };
+}
+post("/verify-signature-or-offer-link", params);
+</script>

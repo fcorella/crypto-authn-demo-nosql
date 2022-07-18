@@ -1,0 +1,14 @@
+[Unit]
+Description=Demonstration of cryptographic authentication with a MongoDB backend database
+
+[Service]
+ExecStart=/home/ec2-user/crypto-authn-demo-nosql/demo.mjs
+Restart=always
+User=ec2-user
+Group=ec2-user
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/ec2-user/crypto-authn-demo-nosql
+
+[Install]
+WantedBy=multi-user.target

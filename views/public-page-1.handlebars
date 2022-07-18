@@ -1,0 +1,34 @@
+{{#if loggedIn}}
+    {{> logged-in-as}}
+{{else}}
+    {{> pagetop-login-form}}
+{{/if}}
+
+{{> preamble}}
+
+<h1>Public Page 1</h1>
+
+<p>
+[<i>
+Public Page 1 is the home page.  The user can navigate to other
+pages, as exemplified by the following menu.
+</i>]
+</p>
+
+<p>
+[<i>
+<strong>On-the-fly login.</strong> <i>If the user tries to go to a
+private page while not logged in, the user is asked to log in, then
+redirected to the desired private page if the login is
+successful.
+</i>]
+</p>
+
+<h3>Menu</h3>
+
+<p>You are in Public Page 1.</p>
+<p><a href="/public-page-2.html">Go to Public Page 2</a>.</p>
+<p><a href="/public-page-3.html">Go to Public Page 3</a>.</p>
+<p><a href="/private-page-1.html">Go to Private Page 1</a>.</p>
+<p><a href="/private-page-2.html">Go to Private Page 2</a>.</p>
+<p><a href="/private-page-3.html">Go to Private Page 3</a>.</p>

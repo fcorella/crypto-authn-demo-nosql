@@ -1,0 +1,41 @@
+<script>
+function checkLogin() {
+    const unElt = document.getElementById("email-login");
+    const email = unElt.value.replace(/^\s+/,"").replace(/\s+$/,"");
+    unElt.value = email;
+    let s = "";
+    if (email == "") {
+        s += "Please enter your email address";
+    }
+    else if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/) == -1) {
+        s += "Invalid email address";
+    }
+    if (s) {
+        document.getElementById("loginError").innerHTML = s;
+        return false;
+    }
+}
+</script>
+
+{{> preamble}}
+
+<h1>Please log in</h1>
+
+<p>
+<span style="color: red" id="loginError"></span>
+</p>
+
+<form action="/log-in" method="post" onsubmit="return checkLogin()">
+    Email address:<br>
+    <input type="text" name="email" id="email-login">
+    <input type="hidden" name="destination" value="{{destination}}">
+    <br>
+    <br>
+    <input type="submit" value="Log in">
+    <br>
+    <br>
+    Not a member? Please <a href="/register.html">register</a>
+    <br>
+    <br>
+    <a href="/">Go to the home page</a>
+</form> 
