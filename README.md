@@ -5,7 +5,6 @@ authentication](https://pomcor.com/2022/07/18/passwordless-authentication-for-th
 in a web application, using a nosql backend database.  A companion
 repository
 [fcorella/crypto-authn-demo-sql](https://github.com/fcorella/crypto-authn-demo-sql.git)
-(../fcorella/crypto-authn-demo-sql)
 demonstrates how the same functionality can be provided by a sql
 backend.
 
