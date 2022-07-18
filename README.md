@@ -13,7 +13,7 @@ backend.
 The app runs under Nodejs, uses MongoDB as its backend database, and
 uses the Pomcor JavaScript Cryptographic Library (PJCL), refactored as
 an ES6 module pjcl.js and available at
-[fcorella/pjcl](../fcorella/pjcl), to
+[fcorella/pjcl](https://github.com/fcorella/pjcl.git), to
 provide cryptographic functionality both to the frontend and to the
 backend.  The app generates random bits using a deterministic random
 bit generator (DRBG) provided by PJCL, seeded with server entropy
