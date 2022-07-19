@@ -18,7 +18,7 @@ import {
     pjclCurve_P256,
     pjclECDSAValidatePublicKey,
     pjclECDSAVerifyMsg
-} from './static/pjcl.js';
+} from 'pjcl';
 
 let pjclCopiedToStatic = true; // false <<<
 let browserEntropyCopiedToStatic = true; // false; <<<
