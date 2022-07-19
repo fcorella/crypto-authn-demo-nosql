@@ -21,7 +21,7 @@ echo "---------------- allowing node to receive network connections"
 sudo /usr/sbin/setcap 'cap_net_bind_service=+ep' /usr/bin/node || exit 1
 
 echo "---------------- installing npm dependencies"
-cd /home/ec2-user/crypto-authn-demo || exit 1
+cd /home/ec2-user/crypto-authn-demo-nosql || exit 1
 npm install . || exit 1
 
 echo "---------------- prompting for and setting the hostname in the link"
@@ -29,11 +29,11 @@ echo "---------------- prompting for and setting the hostname in the link"
 read -p "please enter the public ip address of the EC2 instance, or a
 domain name mapping to the address: " host
 
-cd /home/ec2-user/crypto-authn-demo/views || exit 1
+cd /home/ec2-user/crypto-authn-demo-nosql/views || exit 1
 sed -i s/HOSTNAME/$host/g message-sent.handlebars || exit 1
 
 echo "---------------- installing the demo as a systemd service"
-cd /home/ec2-user/crypto-authn-demo/installation-materials
+cd /home/ec2-user/crypto-authn-demo-nosql/installation-materials
 sudo cp demo.service /etc/systemd/system || exit 1
 
 echo "---------------- starting the demo"
