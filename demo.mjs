@@ -20,10 +20,9 @@ import {
     pjclECDSAVerifyMsg
 } from 'pjcl';
 
-let pjclCopiedToStatic = true; // false <<<
-let browserEntropyCopiedToStatic = true; // false; <<<
+let pjclCopiedToStatic = false;
+let browserEntropyCopiedToStatic = false;
 
-/* <<<
 fs.copyFile("./node_modules/pjcl/pjcl.js", "./static/pjcl.js", function(err) {
     if (err) throw new Error(err);
     pjclCopiedToStatic = true;
@@ -33,7 +32,7 @@ fs.copyFile("./node_modules/pjcl/browser-entropy.js", "./static/browser-entropy.
     if (err) throw new Error(err);
     browserEntropyCopiedToStatic = true;
 });
-*/ //<<<
+
 const rbgStateObject = new Object();
 const rbgSecurityStrength = 128;
 const reseedPeriod = 604093; // a little over 10 minutes
