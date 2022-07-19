@@ -39,7 +39,7 @@ server to use the app.
 - In the demo, the server uses a self-signed certificate, which causes browser warnings.
 
 - As explained in the [blog
-post](https://pomcor.com/2022/07/18/passwordless-authentication-for-the-consumer-space/),
+post](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/),
 the UX calls for the app sending a dual-purpose link in an email
 message.  In the demo, the message is simulated by a web page
 displayed after a timeout.
