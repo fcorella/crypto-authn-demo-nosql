@@ -607,6 +607,9 @@ app.get('/logout',function(req,res) {
             res.redirect(303, "/");
         });
     }
+    else {
+        res.redirect(303, "/");
+    }
 });
 
 function checkIfLoggedIn(req,res,next) {
