@@ -33,3 +33,13 @@ creating a cryptographic credential in a browser.  The script will
 install MongoDB, node and node modules including pjcl, and will start
 the app as a systemd service.  You can then visit the home page of the
 server to use the app.
+
+### Practical details
+
+- In the demo, the server uses a self-signed certificate, which causes browser warnings.
+
+- As explained in the [blog
+post](https://pomcor.com/2022/07/18/passwordless-authentication-for-the-consumer-space/),
+the UX calls for the app sending a dual-purpose link in an email
+message.  In the demo, the message is simulated by a web page
+displayed after a timeout.
