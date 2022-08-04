@@ -43,3 +43,9 @@ post](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer
 the UX calls for the app sending a dual-purpose link in an email
 message.  In the demo, the message is simulated by a web page
 displayed after a timeout.
+
+### Additional information
+
+[Passwordless Authentication for the Consumer Space](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/)
+
+[Cryptographic Authentication for Web Applications](https://pomcor.com/cryptographic-authentication/)
