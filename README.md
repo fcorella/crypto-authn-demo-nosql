@@ -1,3 +1,5 @@
+### Please note: Amazon Linux 2023 is not yet supported by MongoDB.  Use instead the previous version, called Amazon Linux 2
+
 ### Functionality
 
 This is a demo of [passwordless cryptographic
@@ -24,7 +26,7 @@ front end.
 ### How to run the demo
 
 To run the demo, launch a free-tier eligible EC2 server running
-Amazon Linux on AWS, clone the repository into a directory
+Amazon Linux 2 on AWS, clone the repository into a directory
 /home/ec2-user/crypto-authn-demo-nosql, change directory to
 crypto-authn-demo-nosql, and run the bash script ./install-demo.
 The script will ask you for the public IP address of the server or a
