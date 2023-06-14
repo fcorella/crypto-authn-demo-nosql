@@ -7,7 +7,7 @@ function checkLogInForm() {
     if (email == "") {
         s = "Please enter your email address";
     }
-    else if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/) == -1) {
+    else if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1) {
         s = "Invalid email address";
     }
     if (s) {

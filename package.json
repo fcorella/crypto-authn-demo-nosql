@@ -8,12 +8,13 @@
     "author": "Francisco Corella (https://pomcor.com)",
     "license": "MIT",
     "dependencies": {
+        "@aws-sdk/client-ses": "^3.350.0",
         "body-parser": "^1.20.0",
         "cookie-parser": "^1.4.6",
         "express": "^4.18.1",
         "express-handlebars": "^6.0.6",
         "middleware-stack-printer": "^0.0.1",
         "mongoose": "^6.3.6",
-	"pjcl": "^1.0.0"
+        "pjcl": "^1.0.0"
     }
 }

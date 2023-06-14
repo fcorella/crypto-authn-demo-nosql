@@ -1,14 +1,25 @@
-### Please note: Amazon Linux 2023 is not yet supported by MongoDB.  Use instead the previous version, called Amazon Linux 2
+### Please note: Amazon Linux 2023 is not yet supported by MySQL community server.  Use instead the previous version, called Amazon Linux 2
 
 ### Functionality
 
 This is a demo of [passwordless cryptographic
 authentication](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/)
-in a web application, using a nosql backend database.  A companion
-repository
+to a web application.  The user registers an email address and the
+JavaScript frontend of the web application creates a key pair in
+browser storage, specifically in localStorage.  The user can then sign
+in on any browser in any device by entering the email address in a
+login form.  If there is a key pair in the browser, the user is
+authenticated by a signature on an authentication challenge computed
+with the private key.  If not, an email verification link is sent to
+the address, and opening the link in the browser causes a key pair to
+be created.  In a backend database there is a user record identified
+by the email address and a credential record for each browser having a
+key pair, containing the public key component of the key pair and uses
+the email address to reference the user record.  This demo uses a
+nosql database.  A companion repository
 [fcorella/crypto-authn-demo-sql](https://github.com/fcorella/crypto-authn-demo-sql.git)
-demonstrates how the same functionality can be provided by a sql
-backend.
+demonstrates how the same functionality can be provided by an sql
+database.
 
 ### Ingredients
 
@@ -25,29 +36,29 @@ front end.
 
 ### How to run the demo
 
-To run the demo, launch a free-tier eligible EC2 server running
-Amazon Linux 2 on AWS, clone the repository into a directory
-/home/ec2-user/crypto-authn-demo-nosql, change directory to
-crypto-authn-demo-nosql, and run the bash script ./install-demo.
+To run the demo, launch a free-tier eligible EC2 server running Amazon
+Linux 2 on AWS.  *Be sure to use Amazon Linux 2 rather than Amazon
+Linux 2023*; Amazon Linux 2023 does not work MySQL community server at
+this time.  Install git (sudo yum -y install git), clone the
+repository into a directory /home/ec2-user/crypto-authn-demo-sql,
+change directory to crypto-authn-demo-sql, and run the bash script
+install-demo (sudo ./install-demo).  The script will install MongoDB,
+Mongoose, Nodejs, and node modules including pjcl.
+
 The script will ask you for the public IP address of the server or a
-domain name that maps to the IP address, to be used in a link for
-creating a cryptographic credential in a browser.  The script will
-install MongoDB, node and node modules including pjcl, and will start
-the app as a systemd service.  You can then visit the home page of the
-server to use the app.
+domain name that maps to the IP address, and will give you the option
+to send the email verification link using the AWS Simple Email Service
+(SES) or to simulate the email message by displaying a web page after
+a small delay.  To use SES your AWS account must have moved out of the
+SES sandbox, and you will have to provide a verified sender address to
+the script; use simulated email if you run into any difficulty.
 
-### Practical details
+The demo uses a self-signed certificate cert.pem and its private key
+key.pem.  To avoid the browser warnings you can replace them your own
+certificate and private key in the self-signed-demo-cert folder.
 
-- In the demo, the server uses a self-signed certificate, which causes browser warnings.
+### See also...
 
-- As explained in the [blog
-post](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/),
-the UX calls for the app sending a dual-purpose link in an email
-message.  In the demo, the message is simulated by a web page
-displayed after a timeout.
+* The blog post [Passwordless Authentication for the Consumer Space](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/)
 
-### Additional information
-
-[Passwordless Authentication for the Consumer Space](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/)
-
-[Cryptographic Authentication for Web Applications](https://pomcor.com/cryptographic-authentication/)
+* The [Cryptographic Authentication](https://pomcor.com/cryptographic-authentication/) page of the Pomcor site

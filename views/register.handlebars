@@ -8,7 +8,7 @@ function checkRegistration() {
     if (email == "") {
         s += "Please enter your email address<br>";
     }
-    else if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/) == -1) {
+    else if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1) {
         s += "Please enter a valid email address<br>";
     }
 

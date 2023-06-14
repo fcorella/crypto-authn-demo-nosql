@@ -3,9 +3,13 @@
 <div id="to-be-replaced">
 <h2>Message sent</h2>
 
-<p> A message with a link has been sent to {{email}}.  When you open
-that link in a browser a cryptographic credential will be created in
-that browser and you will be logged in.  </p>
+<p> A message with a link has been sent to verify your email address.
+When you open the link in a browser a cryptographic credential will be
+created in that browser and you will be logged in.  In the future,
+once the credential has been created, you will be able to log in by
+entering your email address, without waiting for a message containing
+a link.
+</p>
 
 <p>[<i> In this demo, the message is simulated by a web page that will
 replace this page in 8 seconds </i>]</p>
@@ -13,13 +17,11 @@ replace this page in 8 seconds </i>]</p>
 
 <script>
 const message = `<p>
-Open the link below in a browser to create a cryptographic credential
-in that browser and log in.  In the future, once the credential has
-been created, you will be able to log in by entering your email
-address, without waiting for a message containing a link.
+Open the link below in a browser to verify your email address, create
+a cryptographic credential in that browser, and log in.
 </p>
 <p>
-<a href="https://HOSTNAME/create-credential?email={{email}}&emailVerifCodeHex={{emailVerifCodeHex}}&keyConfirmationChallengeHex={{keyConfirmationChallengeHex}}">https://HOSTNAME/create-credential?email={{email}}&emailVerifCodeHex={{emailVerifCodeHex}}&keyConfirmationChallengeHex={{keyConfirmationChallengeHex}}</a>
+<a href="https://{{hostname}}/create-credential?email={{email}}&emailVerifCodeHex={{emailVerifCodeHex}}&keyConfirmationChallengeHex={{keyConfirmationChallengeHex}}">https://{{hostname}}/create-credential?email={{email}}&emailVerifCodeHex={{emailVerifCodeHex}}&keyConfirmationChallengeHex={{keyConfirmationChallengeHex}}</a>
 </p>`;
 
 function displayMessage() {
