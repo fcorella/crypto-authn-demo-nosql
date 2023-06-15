@@ -1,5 +1,3 @@
-### Please note: Amazon Linux 2023 is not yet supported by MySQL community server.  Use instead the previous version, called Amazon Linux 2
-
 ### Functionality
 
 This is a demo of [passwordless cryptographic
