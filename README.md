@@ -1,3 +1,5 @@
+# Cross-browser Passwordless Authentication with a NOSQL Backend
+
 ### Functionality
 
 This is a demo of [passwordless cryptographic
