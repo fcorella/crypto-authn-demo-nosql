@@ -64,3 +64,5 @@ certificate and private key in the self-signed-demo-cert folder.
 * The blog post [Passwordless Authentication for the Consumer Space](https://pomcor.com/2022/07/19/passwordless-authentication-for-the-consumer-space/)
 
 * The [Cryptographic Authentication](https://pomcor.com/cryptographic-authentication/) page of the Pomcor site
+
+* The [Demonstrations](https://pomcor.com/demos/) page of the pomcor site
