@@ -25,7 +25,7 @@ import { SESClient } from "@aws-sdk/client-ses";
 
 // install_demo fixes the values of the following constants
 //
-const hostname = "18.206.233.1";
+const hostname = "HOSTNAME";
 const realOrSimulated = "REALEMAIL";
 const senderAddress = "fcorella@pomcor.com";
 
