@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "---------------- installing mongodb"
-sudo cp installation-materials/mongodb-org-5.0.repo /etc/yum.repos.d/ || exit 1
+sudo cp installation-materials/mongodb-org-8.0.repo /etc/yum.repos.d/ || exit 1
 sudo yum install -y mongodb-org || exit 1
 
 echo "---------------- starting mongod as a systemd service"
@@ -10,7 +10,7 @@ sudo systemctl status mongod || exit 1
 sudo systemctl enable mongod || exit 1 // restart after reboot
 
 echo "---------------- installing nodejs"
-curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash - || exit 1
+curl -sL https://rpm.nodesource.com/setup_23.x | sudo bash - || exit 1
 sudo yum install -y nodejs || exit 1
 node --version || exit 1
 

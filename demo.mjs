@@ -25,9 +25,9 @@ import { SESClient } from "@aws-sdk/client-ses";
 
 // install_demo fixes the values of the following constants
 //
-const hostname = "HOSTNAME";
+const hostname = "18.206.233.1";
 const realOrSimulated = "REALEMAIL";
-const senderAddress = "SENDERADDRESS";
+const senderAddress = "fcorella@pomcor.com";
 
 // sendEmail is a function that is only created when using real rather than simulated email
 //
@@ -289,7 +289,7 @@ app.post('/register-user',function(req,res) {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     if (
-        email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
+        email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
         firstname.search(/^[A-Za-z]+$/) == -1 ||
         lastname.search(/^[A-Za-z]+$/) == -1
     ) {
@@ -358,7 +358,7 @@ app.get('/create-credential',function(req,res) {
     const keyConfirmationChallengeHex = req.query.keyConfirmationChallengeHex;
     if (
 	// input validation
-        email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
+        email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
         emailVerifCodeHex.search(/^[A-Fa-f0-9]+$/) == -1 ||
         keyConfirmationChallengeHex.search(/^[A-Fa-z0-9]+$/) == -1
     ) {
@@ -386,7 +386,7 @@ app.post('/register-credential',function(req,res) {
     const sigHex_s = req.body.sigHex_s;
     if (
 	// input validation
-        email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
+        email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
         emailVerifCodeHex.search(/^[A-Fa-f0-9]+$/) == -1 ||
         pubKeyHex_Q_x.search(/^[A-Fa-z0-9]+$/) == -1 ||
         pubKeyHex_Q_y.search(/^[A-Fa-z0-9]+$/) == -1 ||
@@ -499,7 +499,7 @@ app.post('/log-in',function(req,res) {
     // input validation
     // the error should have been caught by the frontend
     //
-    if (email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1) {
+    if (email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1) {
         res.redirect(303, "/email-address-not-found.html");
         return;
     }
@@ -545,7 +545,7 @@ function verifySignature(email, req, res) {
     const destination = req.body.destination;
     if (
   	// input validation
-        email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
+        email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1 ||
         pubKeyHex_Q_x.search(/^[A-Fa-f0-9]+$/) == -1 ||
         pubKeyHex_Q_y.search(/^[A-Fa-f0-9]+$/) == -1 ||
         sigHex_r.search(/^[A-Fa-f0-9]+$/) == -1 ||
@@ -614,7 +614,7 @@ function verifySignature(email, req, res) {
 function offerCredentialCreationLink(email, req, res) {
     if (
   	// input validation
-        email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1
+        email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1
     ) {
         res.redirect(303, "/authentication-failure.html");
         return;
@@ -631,7 +631,7 @@ app.get('/send-link',function(req,res) {
     if (
   	// input validation
 	// the link request must have been tampered with
-        email.search(/^[A-Za-z0-9]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1
+        email.search(/^[A-Za-z0-9_]+@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*\.[A-Za-z]+$/) == -1
     ) {
         res.redirect(303, "/invalid-link-request.html");
         return;

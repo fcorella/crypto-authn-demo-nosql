@@ -8,6 +8,8 @@ User=ec2-user
 Group=ec2-user
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
+Environment=AWS_SECRET_ACCESS_KEY=ufEqBaJ/fgAJAtEd8xmU2aJiCpq/hPcLxXzMW647
+Environment=AWS_ACCESS_KEY_ID=AKIA4JPOAZCUIN5RRLWP
 WorkingDirectory=/home/ec2-user/crypto-authn-demo-nosql
 
 [Install]

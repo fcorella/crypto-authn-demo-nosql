@@ -37,15 +37,13 @@ front end.
 ### How to run the demo
 
 To run the demo, launch a free-tier eligible EC2 server running Amazon
-Linux 2 on AWS.  *Be sure to use Amazon Linux 2 rather than Amazon
-Linux 2023*; Amazon Linux 2023 does not work MySQL community server at
-this time.  Install git (sudo yum -y install git), clone the
+Linux 2023 on AWS.  Install git (sudo yum -y install git), clone the
 repository into a directory /home/ec2-user/crypto-authn-demo-sql, and
-change directory to crypto-authn-demo-sql.
-Make sure that install-script 
-and demo.mjs are executable (chmod a+x install-script demo.mjs), and run 
-the bash script install-demo (sudo ./install-demo).  The script will install MongoDB,
-Mongoose, Nodejs, and node modules including pjcl.
+change directory to crypto-authn-demo-sql.  Make sure that
+install-script and demo.mjs are executable (chmod a+x install-script
+demo.mjs), and run the bash script install-demo (sudo ./install-demo).
+The script will install MongoDB, Mongoose, Nodejs, and node modules
+including pjcl.
 
 The script will ask you for the public IP address of the server or a
 domain name that maps to the IP address, and will give you the option
